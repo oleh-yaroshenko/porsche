@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porsche</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="modal">
+        <form action="" class="modal-form">
+            <div class="modal-form-close">
+                <div class="modal-form-close-line"></div>
+                <div class="modal-form-close-line"></div>
+            </div>
+            <span class="modal-form-title">Get in Touch</span>
+            <div class="modal-form-row">
+                <label for="name" class="modal-form-row-label">Name</label>
+                <input type="text" name="name" id="name" class="modal-form-row-input" required
+                    placeholder="Enter your name">
+            </div>
+            <div class="modal-form-row">
+                <label for="email" class="modal-form-row-label">Email</label>
+                <input type="email" name="email" id="email" class="modal-form-row-input" required
+                    placeholder="Enter yout email">
+            </div>
+            <div class="modal-form-row">
+                <label for="phone" class="modal-form-row-label">Phone (optional)</label>
+                <input type="tel" name="phone" id="phone" class="modal-form-row-input"
+                    placeholder="Enter your phone number">
+            </div>
+            <div class="modal-form-row">
+                <label for="message" class="modal-form-row-label">Message</label>
+                <textarea class="modal-form-row-textarea" name="message" id="message" required
+                    placeholder="Enter your message" rows="4"></textarea>
+            </div>
+            <button type="submit" class="modal-form-btn">Submit</button>
+        </form>
+    </div>
+    <header class="header" id="top">
+        <div class="header-lang">
+            <a href="#" class="header-lang-a">En</a>
+            <a href="#" class="header-lang-a">Fr</a>
+        </div>
+        <span class="header-title">Porsche</span>
+        <div class="header-burger">
+            <span class="header-burger-title">Menu</span>
+            <div class="header-burger-wrapper">
+                <div class="header-burger-wrapper-line"></div>
+                <div class="header-burger-wrapper-line"></div>
+                <div class="header-burger-wrapper-line"></div>
+            </div>
+        </div>
+        <div class="header-menu">
+            <ul class="header-menu-ul">
+                <li class="header-menu-ul-li">
+                    <a href="#" class="header-menu-ul-li-a dropdown dropdown1">Models</a>
+                    <ul class="header-menu-ul-li-ul dropdown-content dropdown-content1">
+                        <li class="header-menu-ul-li-ul-li"><a href="#" class="header-menu-ul-li-ul-li-a">Black
+                                Collection</a></li>
+                        <li class="header-menu-ul-li-ul-li"><a href="#" class="header-menu-ul-li-ul-li-a">Red
+                                Collection</a></li>
+                        <li class="header-menu-ul-li-ul-li"><a href="#" class="header-menu-ul-li-ul-li-a">Beige
+                                Collection</a></li>
+                    </ul>
+                </li>
+                <li class="header-menu-ul-li">
+                    <a href="#" class="header-menu-ul-li-a dropdown dropdown2">Services</a>
+                    <ul class="header-menu-ul-li-ul dropdown-content dropdown-content2">
+                        <li class="header-menu-ul-li-ul-li"><a href="#"
+                                class="header-menu-ul-li-ul-li-a">Maintenance</a>
+                        </li>
+                        <li class="header-menu-ul-li-ul-li"><a href="#" class="header-menu-ul-li-ul-li-a">Equipment</a>
+                        </li>
+                        <li class="header-menu-ul-li-ul-li"><a href="#" class="header-menu-ul-li-ul-li-a">Configure</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="header-menu-ul-li">
+                    <a href="#" class="header-menu-ul-li-a">Find a Dealer</a>
+                </li>
+                <li class="header-menu-ul-li">
+                    <a href="#" class="header-menu-ul-li-a">Porsche Account</a>
+                </li>
+                <li class="header-menu-ul-li">
+                    <a href="#top" class="header-menu-ul-li-a modal-show">Get in Touch</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <home class="home">
+        <div class="home-hero hidden">
+            <span class="home-hero-title">Introducing the <br class="home-hero-title-br">Brand New 911</span>
+            <a href="#" class="home-hero-a" id="arrow">Explore</a>
+            <a href="#arrow" class="home-hero-arrow">
+                <img src="assets/arrow.png" alt="image" class="home-hero-arrow-img">
+            </a>
+        </div>
+        <div class="home-models hidden">
+            <span class="home-models-title">Models</span>
+            <div class="home-models-wrapper">
+                <div class="home-models-wrapper-card hidden">
+                    <span class="home-models-wrapper-card-title">Black</span>
+                    <span class="home-models-wrapper-card-descr">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Fugiat inventore numquam maiores nisi quibusdam laudantium vero.</span>
+                    <a href="#" class="home-models-wrapper-card-a home-models-wrapper-card-a-black">Explore <img
+                            src="assets/arrow.png" alt="image" class="home-models-wrapper-card-a-img"></a>
+                </div>
+                <div class="home-models-wrapper-card hidden">
+                    <span class="home-models-wrapper-card-title">Red</span>
+                    <span class="home-models-wrapper-card-descr">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Fugiat inventore numquam maiores nisi quibusdam laudantium vero.</span>
+                    <a href="#" class="home-models-wrapper-card-a home-models-wrapper-card-a-red">Explore <img
+                            src="assets/arrow.png" alt="image" class="home-models-wrapper-card-a-img"></a>
+                </div>
+                <div class="home-models-wrapper-card hidden">
+                    <span class="home-models-wrapper-card-title">Beige</span>
+                    <span class="home-models-wrapper-card-descr">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Fugiat inventore numquam maiores nisi quibusdam laudantium vero.</span>
+                    <a href="#" class="home-models-wrapper-card-a home-models-wrapper-card-a-beige">Explore <img
+                            src="assets/arrow.png" alt="image" class="home-models-wrapper-card-a-img"></a>
+                </div>
+            </div>
+        </div>
+        <div class="home-discover hidden">
+            <span class="home-discover-title">Discover</span>
+            <div class="home-discover-wrapper">
+                <div class="home-discover-wrapper-card hidden">
+                    <a href="#" class="home-discover-wrapper-card-a">
+                        Porsche Finder
+                        <img src="assets/arrow.png" alt="image" class="home-discover-wrapper-card-a-img">
+                    </a>
+                </div>
+                <div class="home-discover-wrapper-card hidden">
+                    <a href="#" class="home-discover-wrapper-card-a">
+                        Porsche Experience
+                        <img src="assets/arrow.png" alt="image" class="home-discover-wrapper-card-a-img">
+                    </a>
+                </div>
+                <div class="home-discover-wrapper-card hidden">
+                    <a href="#" class="home-discover-wrapper-card-a">
+                        Porsche Charging
+                        <img src="assets/arrow.png" alt="image" class="home-discover-wrapper-card-a-img">
+                    </a>
+                </div>
+                <div class="home-discover-wrapper-card hidden">
+                    <a href="#" class="home-discover-wrapper-card-a">
+                        Porsche Lorem
+                        <img src="assets/arrow.png" alt="image" class="home-discover-wrapper-card-a-img">
+                    </a>
+                </div>
+                <div class="home-discover-wrapper-card hidden">
+                    <a href="#" class="home-discover-wrapper-card-a">
+                        Porsche Ipsum
+                        <img src="assets/arrow.png" alt="image" class="home-discover-wrapper-card-a-img">
+                    </a>
+                </div>
+                <div class="home-discover-wrapper-card hidden">
+                    <a href="#" class="home-discover-wrapper-card-a">
+                        Porsche Dolorem
+                        <img src="assets/arrow.png" alt="image" class="home-discover-wrapper-card-a-img">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="home-dealer hidden">
+            <span class="home-dealer-title">Dealer Location</span>
+            <span class="home-dealer-descr">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero consectetur
+                earum laudantium, id totam repellat ipsam.</span>
+            <a href="#" class="home-dealer-a">Find a Dealer <img src="assets/arrow.png" alt="image"
+                    class="home-dealer-a-img">
+            </a>
+        </div>
+    </home>
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-top-contact">
+                <span class="footer-top-contact-title">Contact</span>
+                <a href="#bottom" class="footer-top-contact-a modal-show">Get in Touch</a>
+            </div>
+            <div class="footer-top-social">
+                <span class="footer-top-social-title">Social Media</span>
+                <div class="footer-top-social-wrapper">
+                    <img src="assets/instagram.png" alt="image" class="footer-top-social-wrapper-img">
+                    <img src="assets/facebook.png" alt="image" class="footer-top-social-wrapper-img">
+                    <img src="assets/telegram.png" alt="image" class="footer-top-social-wrapper-img">
+                    <img src="assets/twitter.png" alt="image" class="footer-top-social-wrapper-img">
+                </div>
+            </div>
+            <div class="footer-top-company">
+                <span class="footer-top-company-title">Company</span>
+                <div class="footer-top-company-wrapper">
+                    <a href="#" class="footer-top-company-wrapper-a">Career</a>
+                    <a href="#" class="footer-top-company-wrapper-a">Forum</a>
+                    <a href="#" class="footer-top-company-wrapper-a">Press</a>
+                    <a href="#" class="footer-top-company-wrapper-a">Subsidiaries</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-wrapper">
+                <a href="#" class="footer-bottom-wrapper-a">Cookie Policy</a>
+                <a href="#" class="footer-bottom-wrapper-a">Terms & Conditions</a>
+                <a href="#" class="footer-bottom-wrapper-a">Privacy Policy</a>
+                <a href="#" class="footer-bottom-wrapper-a">FAQ</a>
+                <a href="#" class="footer-bottom-wrapper-a">Legal Notice</a>
+            </div>
+            <span class="footer-bottom-copyright" id="bottom">© 1931-2024 Porsche. All rights reserved.</span>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

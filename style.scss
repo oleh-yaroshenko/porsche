@@ -1,0 +1,1580 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@font-face {
+    font-family: "Porsche";
+    src: url(assets/font/porsche-regular.ttf);
+    font-weight: 400;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+    font-weight: normal;
+    font-size: 100%;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    color: initial;
+    font-family: inherit;
+    list-style: none;
+    vertical-align: baseline;
+    background: none;
+    outline: none;
+}
+
+$red-dark: #3D0410;
+$red: #AB0009;
+$gray-light: #CFCFCF;
+$beige-dark: #9E8E7E;
+$beige: #C4B7A9;
+$beige-light: #F0E3D5;
+$black: #0B0B0B;
+$black75: #0a0a0abf;
+$black10: #0a0a0a1a;
+$gray-dark: #343434;
+$gray: #C9C9C9;
+$gray-2: #dfdfdf;
+$white: #F7F7F7;
+$white25: #f7f7f740;
+$transition: cubic-bezier(.62, .03, .13, 1.08);
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "Inter", sans-serif;
+}
+
+.hidden {
+    transition: 1s $transition;
+}
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 15;
+    background: $black75;
+    transition: .3s $transition;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-form {
+    width: 664px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: $white;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    position: relative;
+
+    @media screen and (max-width: 1440px) {
+        width: 552px;
+        padding: 1rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        width: calc(100% - 1rem);
+    }
+
+    @media screen and (max-width: 375px) {
+        padding: 0.5rem;
+    }
+}
+
+.modal-form-close {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    cursor: pointer;
+    position: absolute;
+    right: 3rem;
+    top: 3rem;
+
+    @media screen and (max-width: 1440px) {
+        top: 2.75rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        right: 1.5rem;
+        top: 2.25rem;
+    }
+
+    @media screen and (max-width: 375px) {
+        right: 1rem;
+        top: 1.5rem;
+    }
+}
+
+.modal-form-close-line {
+    width: 1.75rem;
+    height: 3px;
+    background: $black;
+    position: relative;
+
+    &:nth-child(1) {
+        rotate: -45deg;
+        bottom: -3px;
+    }
+
+    &:nth-child(2) {
+        rotate: 45deg;
+        top: -3px;
+    }
+}
+
+.modal-form-title {
+    font-size: 48px;
+    font-weight: 800;
+    color: $black;
+    padding-bottom: 1.5rem;
+    text-align: center;
+
+    @media screen and (max-width: 1440px) {
+        padding-bottom: 0.5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        font-size: 36px;
+    }
+
+    @media screen and (max-width: 375px) {
+        font-size: 32px;
+    }
+}
+
+.modal-form-row {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 1.5rem;
+
+    @media screen and (max-width: 1440px) {
+        padding-bottom: 0.75rem;
+    }
+
+    @media screen and (max-width: 375px) {
+        padding-bottom: 0.5rem;
+    }
+}
+
+.modal-form-row-label {
+    font-size: 18px;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    font-weight: 600;
+
+    @media screen and (max-width: 1440px) {
+        padding-bottom: 0.25rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        font-size: 1rem;
+    }
+}
+
+.modal-form-row-input {
+    padding: .5rem 1rem;
+    border-radius: 5rem;
+    background: $gray-2;
+    font-size: 18px;
+    color: $black;
+
+    &::placeholder {
+        color: $black75;
+    }
+
+    @media screen and (max-width: 768px) {
+        font-size: 1rem;
+    }
+}
+
+.modal-form-row-textarea {
+    padding: .5rem 1rem;
+    border-radius: 1.125rem;
+    background: $gray-2;
+    resize: none;
+    font-size: 18px;
+    color: $black;
+
+    &::placeholder {
+        color: $black75;
+    }
+}
+
+.modal-form-btn {
+    color: $white;
+    border-radius: 5rem;
+    padding: 1.25rem 2.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 28px;
+    background: $black;
+    display: inline-block;
+    position: relative;
+    transition: .3s $transition;
+    z-index: 1;
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: $gray-2;
+        transform: scaleX(0);
+        transition: .3s $transition;
+        transform-origin: 50%;
+        border-radius: 5rem;
+        opacity: 0;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+
+    &:hover {
+        color: $black;
+    }
+
+    @media screen and (max-width: 1440px) {
+        padding: 1rem 2rem;
+        font-size: 24px;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: .75rem 1.5rem;
+        font-size: 20px;
+    }
+
+    @media screen and (max-width: 375px) {
+        padding: 0.5rem 1rem;
+        font-size: 18px;
+    }
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 10rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    background: linear-gradient(to bottom, $black, transparent);
+    transition: 1s $transition;
+
+    &.scrolled {
+        background: linear-gradient(to bottom, $black, transparent), $black;
+        padding: 3rem 10rem;
+
+        @media screen and (max-width: 1440px) {
+            padding: 3rem 5rem;
+        }
+
+        @media screen and (max-width: 1024px) {
+            padding: 3rem 2rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            padding: 2rem 1rem;
+        }
+    }
+
+    @media screen and (max-width: 1440px) {
+        padding: 2rem 5rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        padding: 2rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 1rem;
+    }
+}
+
+.header-lang {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    @media screen and (max-width: 768px) {
+        gap: 0.25rem;
+    }
+
+    @media screen and (max-width: 375px) {
+        gap: 0.5rem;
+    }
+}
+
+.header-lang-a {
+    font-size: 18px;
+    color: $white;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-block;
+    position: relative;
+    transition: .3s $transition;
+    padding: 3px 6px;
+
+    @media screen and (max-width: 375px) {
+        font-size: 1rem;
+        padding: 0;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: $white25;
+        transform: scaleX(0);
+        transition: .3s $transition;
+        transform-origin: 50%;
+        border-radius: 3px;
+        opacity: 0;
+    }
+
+    &:nth-child(2) {
+        color: $white25;
+    }
+
+    &:hover {
+        color: $white;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+.header-title {
+    font-family: "Porsche", sans-serif;
+    font-size: 24px;
+    letter-spacing: .15rem;
+    color: $white;
+    cursor: pointer;
+    transition: .3s $transition;
+
+    &:hover {
+        color: $red;
+    }
+
+    @media screen and (max-width: 768px) {
+        font-size: 18px;
+    }
+
+    @media screen and (max-width: 375px) {
+        font-size: 16px;
+    }
+}
+
+.header-burger {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    cursor: pointer;
+    position: relative;
+    transition: .3s $transition;
+    padding: 3px 6px;
+
+    @media screen and (max-width: 375px) {
+        padding: 0;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: $white25;
+        transform: scaleX(0);
+        transition: .3s $transition;
+        transform-origin: 50%;
+        border-radius: 3px;
+        opacity: 0;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+.header-burger-title {
+    font-size: 18px;
+    color: $white;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+}
+
+.header-burger-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+    position: relative;
+    transition: .3s $transition;
+
+    &.active {
+        position: fixed;
+        right: 3.5rem;
+        top: 4rem;
+        z-index: 12;
+        gap: 0.2rem;
+
+        @media screen and (max-width: 1440px) {
+            right: 2.5rem;
+            top: 3.25rem;
+        }
+
+        @media screen and (max-width: 1024px) {
+            top: 2.75rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            right: 1rem;
+            top: 1.75rem;
+        }
+
+        @media screen and (max-width: 375px) {
+            top: 1.5rem;
+        }
+
+        .header-burger-wrapper-line {
+            background: $black;
+            position: relative;
+
+            &:nth-child(2) {
+                opacity: 0;
+                position: absolute;
+            }
+
+            &:nth-child(1) {
+                rotate: -45deg;
+                bottom: -3px;
+            }
+
+            &:nth-child(3) {
+                rotate: 45deg;
+                top: -3px;
+            }
+        }
+    }
+}
+
+.header-burger-wrapper-line {
+    width: 1.75rem;
+    height: 3px;
+    background: $white;
+    transition: .3s $transition;
+}
+
+.header-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    background: $black75;
+    transition: .3s $transition;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+
+    &.show {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+.header-menu-ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    background: $white;
+    padding: 3.5rem;
+    padding-right: 7.5rem;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transition: .3s $transition;
+
+    @media screen and (max-width: 1440px) {
+        padding: 2.5rem;
+        gap: 2rem;
+        padding-right: 5rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        padding: 2rem;
+        gap: 1.5rem;
+        padding-right: 4rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 1rem;
+        gap: 1rem;
+        bottom: unset;
+        left: 0;
+    }
+}
+
+.header-menu-ul-li-a {
+    font-size: 24px;
+    color: $black;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    transition: .3s $transition;
+    padding: 3px 6px;
+
+    &.active {
+        &::after {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: $gray-2;
+        transform: scaleX(0);
+        transition: .3s $transition;
+        transform-origin: 50%;
+        border-radius: 3px;
+        opacity: 0;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+
+    &.dropdown {
+        padding-left: calc(2.5rem + 6px);
+    }
+
+    &.dropdown::before {
+        content: "";
+        position: absolute;
+        width: 1.5rem;
+        height: 1.5rem;
+        background: url(assets/arrow.png) no-repeat center center/contain;
+        rotate: 180deg;
+        left: 6px;
+        top: 50%;
+        transform: translateY(50%);
+
+        @media screen and (max-width: 768px) {
+            rotate: 90deg;
+            top: 50%;
+            transform: translateX(-50%);
+            left: 6px;
+        }
+    }
+}
+
+.header-menu-ul-li-ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    position: absolute;
+    background: $gray-2;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    padding: 3.5rem;
+    transition: .3s $transition;
+    opacity: 0;
+    pointer-events: none;
+
+    &.selected {
+        z-index: 2;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    @media screen and (max-width: 1440px) {
+        padding: 2.5rem;
+        gap: 2rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        padding: 2rem;
+        gap: 1.5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 1rem;
+        gap: 1rem;
+        right: 0;
+        top: unset;
+        transform: translateY(100%);
+    }
+}
+
+.header-menu-ul-li-ul-li-a {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: $black;
+    display: inline-block;
+    position: relative;
+    padding: 3px 6px;
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: $black10;
+        transform: scaleX(0);
+        transition: .3s $transition;
+        transform-origin: 50%;
+        border-radius: 3px;
+        opacity: 0;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    background: $white;
+}
+
+.home-hero {
+    background: url(assets/porsche-red-back.jpeg) no-repeat fixed center/cover;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 17.5rem 10rem 15rem;
+    gap: 2.25rem;
+    position: relative;
+    opacity: 0;
+
+    @media screen and (max-width: 1440px) {
+        padding: 17.5 5rem 12.5rem;
+        gap: 2rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        padding: 15rem 2rem 10rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 15rem 1rem 10rem;
+        align-items: center;
+        gap: 1.5rem;
+    }
+}
+
+.home-hero-title {
+    color: $white;
+    font-size: 96px;
+    font-weight: 800;
+
+    @media screen and (max-width: 1440px) {
+        font-size: 72px;
+    }
+
+    @media screen and (max-width: 768px) {
+        font-size: 54px;
+        text-align: center;
+
+        &-br {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 375px) {
+        font-size: 48px;
+    }
+}
+
+.home-hero-a {
+    color: $red;
+    border-radius: 5rem;
+    padding: 1.25rem 2.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 28px;
+    background: $white;
+    display: inline-block;
+    position: relative;
+    transition: .3s $transition;
+    z-index: 1;
+
+    @media screen and (max-width: 768px) {
+        padding: 1rem 2rem;
+        font-size: 24px;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: $red;
+        transform: scaleX(0);
+        transition: .3s $transition;
+        transform-origin: 50%;
+        border-radius: 5rem;
+        opacity: 0;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+
+    &:hover {
+        color: $white;
+    }
+}
+
+.home-hero-arrow {
+    position: absolute;
+    transform: rotate(90deg) translateY(50%);
+    filter: invert(100%);
+    width: 3rem;
+    bottom: 2.5rem;
+    left: 50%;
+
+    @media screen and (max-width: 768px) {
+        width: 2.5rem;
+    }
+
+    @media screen and (max-width: 375px) {
+        bottom: 1.5rem;
+    }
+}
+
+.home-hero-arrow-img {
+    width: 100%;
+}
+
+.home-models {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 7.5rem 0;
+    opacity: 0;
+    transform: translateY(7.5rem);
+
+    @media screen and (max-width: 1440px) {
+        padding: 5rem 0;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 2.5rem 0;
+    }
+
+    @media screen and (max-width: 375px) {
+        padding: 1.5rem 0;
+    }
+}
+
+.home-models-title {
+    font-size: 48px;
+    font-weight: 800;
+    padding-bottom: 7rem;
+    color: $black;
+
+    @media screen and (max-width: 1440px) {
+        padding-bottom: 5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding-bottom: 2.5rem;
+    }
+
+    @media screen and (max-width: 375px) {
+        font-size: 36px;
+        padding-bottom: 1.5rem;
+    }
+}
+
+.home-models-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.home-models-wrapper-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 15rem 5rem;
+    position: relative;
+    opacity: 0;
+    transform: translateY(7.5rem);
+
+    &:nth-child(1) {
+        background: url(assets/porsche-black-front.jpeg) no-repeat center center/cover;
+    }
+
+    &:nth-child(2) {
+        background: url(assets/porsche-red-front.jpeg) no-repeat center center/cover;
+    }
+
+    &:nth-child(3) {
+        background: url(assets/porsche-beige-top.jpeg) no-repeat center center/cover;
+    }
+
+    @media screen and (max-width: 1440px) {
+        padding: 12.5rem 5rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        padding: 10rem 2rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 5rem 1rem;
+    }
+}
+
+.home-models-wrapper-card-title {
+    font-size: 48px;
+    font-family: "Porsche", sans-serif;
+    color: $white;
+    padding-bottom: 3.5rem;
+    text-shadow: 0 0 10px $gray-dark;
+
+    @media screen and (max-width: 768px) {
+        padding-bottom: 2.5rem;
+    }
+
+    @media screen and (max-width: 375px) {
+        font-size: 36px;
+    }
+}
+
+.home-models-wrapper-card-descr {
+    padding: 0 25% 3.5rem;
+    font-size: 24px;
+    color: $white;
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 0 0 10px $gray-dark;
+
+    @media screen and (max-width: 1440px) {
+        padding: 0 12.5% 3.5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 0 0 2.5rem;
+    }
+
+    @media screen and (max-width: 375px) {
+        font-size: 18px;
+    }
+}
+
+.home-models-wrapper-card-a {
+    padding: 1.25rem 2.5rem;
+    border-radius: 5rem;
+    background: $white;
+    display: flex;
+    color: $black;
+    align-items: center;
+    gap: 1.25rem;
+    text-transform: uppercase;
+    font-size: 28px;
+    font-weight: 700;
+    box-shadow: 0 0 10px $gray;
+    position: relative;
+    transition: .3s $transition;
+    z-index: 1;
+
+    @media screen and (max-width: 768px) {
+        padding: 1rem 2rem;
+        font-size: 24px;
+        gap: 0.75rem;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: $black;
+        transform: scaleX(0);
+        transition: .3s $transition;
+        transform-origin: 50%;
+        border-radius: 5rem;
+        opacity: 0;
+    }
+
+    &-black::after {
+        background: $black;
+    }
+
+    &-red::after {
+        background: $red;
+    }
+
+    &-beige::after {
+        background: $beige;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+
+    &:hover {
+        color: $white;
+        box-shadow: none;
+
+        .home-models-wrapper-card-a-img {
+            filter: invert(100%);
+        }
+    }
+}
+
+.home-models-wrapper-card-a-img {
+    transition: .3s $transition;
+    width: 1.75rem;
+
+    @media screen and (max-width: 768px) {
+        width: 1.5rem;
+    }
+}
+
+.home-discover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10rem 7.5rem;
+    opacity: 0;
+    transform: translateY(7.5rem);
+
+    @media screen and (max-width: 1440px) {
+        padding: 0 5rem 5rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        padding: 0 2rem 5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 0 1rem 2.5rem;
+    }
+
+    @media screen and (max-width: 375px) {
+        padding: 0 1rem 1.5rem;
+    }
+}
+
+.home-discover-title {
+    font-size: 48px;
+    font-weight: 800;
+    color: $black;
+    padding-bottom: 7rem;
+
+    @media screen and (max-width: 1440px) {
+        padding-bottom: 5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding-bottom: 2.5rem;
+    }
+
+    @media screen and (max-width: 375px) {
+        font-size: 36px;
+        padding-bottom: 1.5rem;
+    }
+}
+
+.home-discover-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+
+    @media screen and (max-width: 1440px) {
+        gap: 1rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.home-discover-wrapper-card {
+    width: 100%;
+    padding: 10rem 2rem 1.75rem;
+    border-radius: 1.5rem;
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    position: relative;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(7.5rem);
+
+    @media screen and (max-width: 768px) {
+        padding: 10rem 1rem 1rem;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: $black;
+        opacity: 0.25;
+        border-radius: 1.5rem;
+    }
+
+    &:nth-child(1) {
+        background: url(assets/porsche-beige-bottom.jpeg) no-repeat center center/cover;
+    }
+
+    &:nth-child(2) {
+        background: url(assets/porsche-black-top.jpeg) no-repeat center center/cover;
+    }
+
+    &:nth-child(3) {
+        background: url(assets/porsche-red-side.jpeg) no-repeat center center/cover;
+    }
+
+    &:nth-child(4) {
+        background: url(assets/porsche-red-top.jpeg) no-repeat center center/cover;
+    }
+
+    &:nth-child(5) {
+        background: url(assets/porsche-beige-front.jpeg) no-repeat center center/cover;
+    }
+
+    &:nth-child(6) {
+        background: url(assets/porsche-black-logo.jpeg) no-repeat center center/cover;
+    }
+}
+
+.home-discover-wrapper-card-a {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: $white;
+    gap: 1rem;
+    z-index: 1;
+    width: 80%;
+}
+
+.home-discover-wrapper-card-a-img {
+    width: 1.5rem;
+    filter: invert(100%);
+}
+
+.home-dealer {
+    padding: 15rem 10rem;
+    background: url(assets/porsche-black-back.jpeg) no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    opacity: 0;
+    transform: translateY(7.5rem);
+
+    @media screen and (max-width: 1440px) {
+        padding: 15rem 5rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        padding: 10rem 2rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 7.5rem 1rem;
+        align-items: center;
+    }
+
+    @media screen and (max-width: 375px) {
+        padding: 5rem 1rem;
+    }
+}
+
+.home-dealer-title {
+    font-size: 48px;
+    font-weight: 800;
+    color: $white;
+    padding-bottom: 2.5rem;
+
+    @media screen and (max-width: 1440px) {
+        padding-bottom: 1.5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        text-align: center;
+    }
+
+    @media screen and (max-width: 375px) {
+        font-size: 36px;
+    }
+}
+
+.home-dealer-descr {
+    font-size: 24px;
+    font-weight: 600;
+    color: $white;
+    padding-right: 50%;
+    padding-bottom: 2.5rem;
+
+    @media screen and (max-width: 1440px) {
+        padding-right: 25%;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 0 0 2rem;
+        text-align: center;
+    }
+
+    @media screen and (max-width: 375px) {
+        font-size: 18px;
+    }
+}
+
+.home-dealer-a {
+    padding: 1.25rem 2.5rem;
+    border-radius: 5rem;
+    background: $white;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    text-transform: uppercase;
+    font-size: 28px;
+    font-weight: 700;
+    position: relative;
+    transition: .3s $transition;
+    z-index: 1;
+    color: $black;
+
+    @media screen and (max-width: 1440px) {
+        padding: 1rem 2rem;
+        font-size: 24px;
+        gap: 0.75rem;
+    }
+
+    @media screen and (max-width: 375px) {
+        padding: .75rem 1.5rem;
+        font-size: 22px;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: $black;
+        transform: scaleX(0);
+        transition: .3s $transition;
+        transform-origin: 50%;
+        border-radius: 5rem;
+        opacity: 0;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+
+    &:hover {
+        color: $white;
+
+        .home-dealer-a-img {
+            filter: invert(100%);
+        }
+    }
+}
+
+.home-dealer-a-img {
+    transition: .3s $transition;
+    width: 1.75rem;
+
+    @media screen and (max-width: 1440px) {
+        width: 1.5rem;
+    }
+
+    @media screen and (max-width: 375px) {
+        width: 1.25rem;
+    }
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    background: $black;
+    padding: 7.5rem 0 0;
+
+    @media screen and (max-width: 1440px) {
+        padding: 5rem 0 0;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 2.5rem 0 0;
+    }
+}
+
+.footer-top {
+    display: flex;
+    align-items: stretch;
+    gap: 1.5rem;
+    padding: 0 10rem 5rem;
+
+    @media screen and (max-width: 1440px) {
+        padding: 0 5rem 5rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        padding: 0 2rem 5rem;
+        flex-wrap: wrap;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 0 1rem 2.5rem;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.footer-top-contact {
+    flex: 1 1 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: space-between;
+
+    @media screen and (max-width: 1024px) {
+        flex: 1 1 40%;
+    }
+
+    @media screen and (max-width: 768px) {
+        align-items: center;
+    }
+}
+
+.footer-top-contact-title {
+    color: $white;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.footer-top-contact-a {
+    padding: .5rem 1rem;
+    border-radius: 5rem;
+    background: $white;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    position: relative;
+    transition: .3s $transition;
+    z-index: 1;
+    color: $black;
+    width: fit-content;
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: $red;
+        transform: scaleX(0);
+        transition: .3s $transition;
+        transform-origin: 50%;
+        border-radius: 5rem;
+        opacity: 0;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+
+    &:hover {
+        color: $white;
+    }
+}
+
+.footer-top-social {
+    flex: 1 1 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: space-between;
+
+    @media screen and (max-width: 1024px) {
+        flex: 1 1 40%;
+    }
+
+    @media screen and (max-width: 768px) {
+        align-items: center;
+    }
+}
+
+.footer-top-social-title {
+    color: $white;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.footer-top-social-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-top-social-wrapper-img {
+    width: 38px;
+    filter: invert(100%);
+    cursor: pointer;
+}
+
+.footer-top-company {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+
+    @media screen and (max-width: 1024px) {
+        flex: 1 1 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+        align-items: center;
+    }
+}
+
+.footer-top-company-title {
+    color: $white;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.footer-top-company-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    @media screen and (max-width: 768px) {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+.footer-top-company-wrapper-a {
+    padding: .5rem 1rem;
+    border-radius: 5rem;
+    background: $white;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    position: relative;
+    transition: .3s $transition;
+    z-index: 1;
+    color: $black;
+    width: fit-content;
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: $red;
+        transform: scaleX(0);
+        transition: .3s $transition;
+        transform-origin: 50%;
+        border-radius: 5rem;
+        opacity: 0;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+
+    &:hover {
+        color: $white;
+    }
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 7.5rem;
+
+    @media screen and (max-width: 1440px) {
+        gap: 5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        gap: 2.5rem;
+    }
+}
+
+.footer-bottom-wrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0 10rem;
+
+    @media screen and (max-width: 1440px) {
+        padding: 0 5rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        padding: 0 2rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 0 1rem;
+        justify-content: center;
+    }
+}
+
+.footer-bottom-wrapper-a {
+    font-size: 18px;
+    color: $white;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-block;
+    position: relative;
+    transition: .3s $transition;
+    padding: 3px 6px;
+    z-index: 1;
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: $white25;
+        transform: scaleX(0);
+        transition: .3s $transition;
+        transform-origin: 50%;
+        border-radius: 3px;
+        opacity: 0;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+
+    @media screen and (max-width: 375px) {
+        padding: 0;
+    }
+}
+
+.footer-bottom-copyright {
+    padding: 1.5rem 10rem;
+    background: $gray-dark;
+    color: $white;
+
+    @media screen and (max-width: 1440px) {
+        padding: 1.5rem 5rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        padding: 1.5rem 2rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 1rem;
+    }
+
+    @media screen and (max-width: 375px) {
+        font-size: 14px;
+    }
+}
+
+.visible {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+}
